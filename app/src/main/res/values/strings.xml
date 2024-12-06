@@ -3,4 +3,8 @@
     <string name="mario_bros_world">Mario Bros world</string>
     <string name="character_details">Character details</string>
     <string name="character_list">Character list</string>
+    <string name="character_image">Character image</string>
+    <string name="about">About as</string>
+    <string name="accept">Accept</string>
+    <string name="about_as">Application developed by Mariana Mincarelli Silvero. Version 1.0.</string>
 </resources>
