@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("skills", character.getSkills());
 
 
-        Toast.makeText(this, "Se ha seleccionado el personaje " + character.getName(), Toast.LENGTH_SHORT).show();
+
 
         Navigation.findNavController(view).navigate(R.id.characterDetailFragment , bundle);
 

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import mincarelli.silvero.mariobrosworld.databinding.FragmentCharacterDetailBinding;
 
@@ -36,6 +37,8 @@ public class CharacterDetailFragment extends Fragment {
             binding.name.setText(name);
             binding.description.setText(description);
             binding.skills.setText(skills);
+            String characterSelected = getString(R.string.character_selected) + getArguments().getString("name");;
+            Toast.makeText(requireContext(), characterSelected, Toast.LENGTH_SHORT).show();
 
         }
     }

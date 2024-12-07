@@ -7,4 +7,5 @@
     <string name="about">About as</string>
     <string name="accept">Accept</string>
     <string name="about_as">Application developed by Mariana Mincarelli Silvero. Version 1.0.</string>
+    <string name="character_selected">"The selected character is: "</string>
 </resources>
