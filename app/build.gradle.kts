@@ -40,6 +40,7 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.navigation:navigation-ui:2.8.4")
     implementation("androidx.navigation:navigation-fragment:2.8.4")
+    implementation("androidx.core:core-splashscreen:1.0.1")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
