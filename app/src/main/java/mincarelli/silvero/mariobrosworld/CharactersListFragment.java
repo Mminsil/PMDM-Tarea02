@@ -23,6 +23,7 @@ public class CharactersListFragment extends Fragment {
     private FragmentCharactersListBinding binding;
     private ArrayList<Character> characters;
     private CharacterRecyclerViewAdapter adapter;
+    private PreferencesHelper prefs;
 
     @Nullable
     @Override
@@ -36,6 +37,14 @@ public class CharactersListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         loadCharacter();
 
+        prefs = new PreferencesHelper(requireContext());
+        //Show Snackbar only on first launch
+        if(prefs.isFirstLaunch()){
+                String message = getString(R.string.welcome);
+                Snackbar.make(view, message, Snackbar.LENGTH_LONG).show();
+                prefs.setFirstLaunch(false);
+
+        }
 
         adapter = new CharacterRecyclerViewAdapter(characters, getActivity());
         binding.charactersRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -66,5 +75,11 @@ public class CharactersListFragment extends Fragment {
         if(getActivity() != null) {
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.character_list);
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        prefs.setFirstLaunch(true);
     }
 }
