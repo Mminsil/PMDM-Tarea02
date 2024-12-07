@@ -1,11 +1,20 @@
 <resources>
-    <string name="app_name">Mario Bros world</string>
-    <string name="mario_bros_world">Mario Bros world</string>
+    <!-- Nombre de la aplicación -->
+    <string name="app_name">Mario Bros World</string>
+
+    <!-- Etiquetas generales -->
+    <string name="welcome">Welcome to Mario´s World</string>
+    <string name="mario_bros_world">Mario Bros World</string>
+    <string name="about">About us</string>
+    <string name="accept">Accept</string>
+
+    <!-- Detalles de la aplicación -->
+    <string name="app_about_text">Application developed by Mariana Mincarelli Silvero. Version 1.0.</string>
+
+    <!-- Sección de personajes -->
     <string name="character_details">Character details</string>
     <string name="character_list">Character list</string>
     <string name="character_image">Character image</string>
-    <string name="about">About as</string>
-    <string name="accept">Accept</string>
-    <string name="about_as">Application developed by Mariana Mincarelli Silvero. Version 1.0.</string>
-    <string name="character_selected">"The selected character is: "</string>
+    <string name="character_selected">The selected character is:</string>
+    <string name="about_message">Application developed by Mariana Mincarelli Silvero. Version 1.0.</string>
 </resources>

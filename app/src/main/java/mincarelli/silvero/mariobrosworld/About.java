@@ -27,8 +27,8 @@ public class About extends DialogFragment {
         //Crear un costructor para el diálogo
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         //Configurar el título y el mensaje
-        builder.setTitle("About as...");
-        builder.setMessage(R.string.about_as);
+        builder.setTitle("About us...");
+        builder.setMessage(R.string.about_message);
         //Configurar el botón Aceptar que cierra el diálogo
         AlertDialog.Builder accept = builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
             @Override
