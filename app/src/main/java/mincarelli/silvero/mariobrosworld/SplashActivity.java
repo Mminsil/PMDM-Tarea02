@@ -1,6 +1,5 @@
 package mincarelli.silvero.mariobrosworld;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,8 +7,27 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Activity that displays a splash screen when the app is launched.
+ * The behavior of the splash screen differs based on the Android version:
+ * - For devices running versions below Android 12 (API 31), the splash screen is manually handled.
+ * - For devices running Android 12 or above, the system automatically handles the splash screen.
+ */
 public class SplashActivity extends AppCompatActivity {
+    // Constant to define the duration of the splash screen display in milliseconds
     private static final int SPLASH_TIME_OUT = 2000;
+
+    /**
+     * Called when the activity is first created.
+     * Displays the splash screen and starts the MainActivity after a specified delay.
+     * The behavior depends on the Android version:
+     * - For versions below Android 12 (API 31), the splash screen is manually displayed using a handler.
+     * - For Android 12 (API 31) and above, the system handles the splash automatically.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down,
+     *                           this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState(Bundle)}.
+     *                           Otherwise, it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

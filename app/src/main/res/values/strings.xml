@@ -4,21 +4,17 @@
 
     <!-- Etiquetas generales -->
     <string name="welcome">Welcome to Mario´s World</string>
-    <string name="mario_bros_world">Mario Bros World</string>
     <string name="about">About us</string>
     <string name="accept">Accept</string>
 
     <!-- Detalles de la aplicación -->
-    <string name="app_about_text">Application developed by Mariana Mincarelli Silvero. Version 1.0.</string>
+    <string name="about_text">Application developed by Mariana Mincarelli Silvero. Version 1.0.</string>
 
     <!-- Sección de personajes -->
     <string name="character_details">Character details</string>
     <string name="character_list">Character list</string>
     <string name="character_image">Character image</string>
     <string name="character_selected">The selected character is: </string>
-    <string name="about_message">Application developed by Mariana Mincarelli Silvero. Version 1.0.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="language">Select language</string>
     <string name="english">English\n</string>
     <string name="spanish">Spanish</string>

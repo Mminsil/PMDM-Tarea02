@@ -8,7 +8,7 @@
     <string name="accept">Aceptar</string>
 
     <!-- Detalles de la aplicación -->
-    <string name="about_message">Aplicación desarrollada por Mariana Mincarelli Silvero. Versión 1.0.</string>
+    <string name="about_text">Aplicación desarrollada por Mariana Mincarelli Silvero. Versión 1.0.</string>
 
     <!-- Sección de personajes -->
     <string name="character_details">Detalles del personaje</string>

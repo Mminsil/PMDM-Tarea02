@@ -3,16 +3,16 @@
     <style name="Base.Theme.MarioBrosWorld" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="android:windowSplashScreenBackground">#061888</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_mario</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
         <item name="android:windowSplashScreenAnimationDuration">2000</item>
-        <item name="android:windowSplashScreenIconBackgroundColor">#4462B2</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#061888</item>
     </style>
 
     <style name="Theme.MarioBrosWorld" parent="Base.Theme.MarioBrosWorld" />
     <!-- Base application theme for Android <12 -->
-    <style name="Theme.App.Starting" parent="Theme.AppCompat.NoActionBar">
-        <item name="windowSplashScreenBackground">#061888</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_mario</item>
-        <item name="postSplashScreenTheme">@style/Base.Theme.MarioBrosWorld</item>
-    </style>
+    <!--    <style name="Theme.App.Starting" parent="Theme.AppCompat.NoActionBar">-->
+    <!--        <item name="windowSplashScreenBackground">#061888</item>-->
+    <!--        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_mario</item>-->
+    <!--        <item name="postSplashScreenTheme">@style/Base.Theme.MarioBrosWorld</item>-->
+    <!--    </style>-->
 </resources>

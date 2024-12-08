@@ -15,10 +15,10 @@ import androidx.fragment.app.DialogFragment;
  */
 public class About extends DialogFragment {
     /**
-     * Creates and configures the "About as" dialog.
-     * @param savedInstanceState The last saved instance state of the Fragment,
-     * or null if this is a freshly created Fragment.
+     * Creates and configures the "About us" dialog.
      *
+     * @param savedInstanceState The last saved instance state of the Fragment,
+     *                           or null if this is a freshly created Fragment.
      * @return Instance of {@link Dialog} representing the configured dialog.
      */
     @NonNull
@@ -28,16 +28,21 @@ public class About extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         //Configurar el título y el mensaje
         builder.setTitle("About us...");
-        builder.setMessage(R.string.about_message);
+        builder.setMessage(R.string.about_text);
         //Configurar el botón Aceptar que cierra el diálogo
         AlertDialog.Builder accept = builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+            /**
+             * Handles the click event for a dialog button.
+             * This method is triggered when a button in the dialog is clicked.
+             * @param dialog The dialog interface that received the click.
+             * @param which The button that was clicked.
+             */
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // Acción al pulsar "accept"
                 dialog.dismiss();
             }
         });
-
         //Devuelve el diálogo configurado
         return builder.create();
     }
