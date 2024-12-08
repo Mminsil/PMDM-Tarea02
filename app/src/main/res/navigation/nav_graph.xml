@@ -15,4 +15,9 @@
         android:name="mincarelli.silvero.mariobrosworld.CharacterDetailFragment"
         android:label="CharacterDetailFragment"
         tools:layout="@layout/fragment_character_detail" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="mincarelli.silvero.mariobrosworld.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>
