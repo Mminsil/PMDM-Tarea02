@@ -1,13 +1,12 @@
 package mincarelli.silvero.mariobrosworld;
 
-import static androidx.core.app.ActivityCompat.invalidateOptionsMenu;
-
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.preference.PreferenceManager;
@@ -62,6 +61,9 @@ public class SettingsFragment extends Fragment {
      * Retrieves the saved language and selects the corresponding RadioButton.
      */
     private void initializeLanguageSelection() {
+        // Temporarily remove the listener to avoid triggering events
+        binding.languageRadioGroup.setOnCheckedChangeListener(null);
+
         // Obtenemos el idioma actual
         String currentLanguage = getCurrentLanguage();
 
@@ -70,6 +72,9 @@ public class SettingsFragment extends Fragment {
         } else if ("es".equals(currentLanguage)) {
             binding.languageRadioGroup.check(R.id.spanishRadioButton);
         }
+
+        // Reattach the listener
+        binding.languageRadioGroup.setOnCheckedChangeListener(this::onLanguageSelected);
     }
 
     /**
@@ -79,7 +84,9 @@ public class SettingsFragment extends Fragment {
      */
     private String getCurrentLanguage() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(requireContext());
-        return prefs.getString("app_language", "en"); // "en" es el idioma predeterminado
+        String language = prefs.getString("app_language", "en"); // Default is "en"
+        Log.d("SettingsFragment", "Current saved language: " + language);
+        return language;
     }
 
     /**
@@ -151,6 +158,19 @@ public class SettingsFragment extends Fragment {
     private void invalidateOptionsMenu() {
         if (getActivity() != null) {
             getActivity().invalidateOptionsMenu();
+        }
+    }
+
+    /**
+     * Called when the Fragment is visible to the user.
+     * Updates the title of the ActionBar to "Settings".
+     */
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Cambia el título del ActionBar
+        if (getActivity() != null) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.settings_app);
         }
     }
 }

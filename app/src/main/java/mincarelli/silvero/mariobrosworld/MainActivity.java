@@ -1,5 +1,7 @@
 package mincarelli.silvero.mariobrosworld;
 
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -14,11 +16,13 @@ import androidx.navigation.ui.NavigationUI;
 import mincarelli.silvero.mariobrosworld.databinding.ActivityMainBinding;
 import mincarelli.silvero.mariobrosworld.databinding.NavHeaderBinding;
 
-import android.util.Log;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+
+import java.util.Locale;
 
 /**
  * MainActivity handles the main UI and navigation logic of the application.
@@ -27,7 +31,6 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private NavController navController;
-    private PreferencesHelper prefs;
     private AppBarConfiguration appBarConfiguration;
 
     /**
@@ -42,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //Aplicar el lenguaje guardado a la app
+        applySavedLanguage();
 
         // Configurar Toolbar
         setSupportActionBar(binding.toolbar);
@@ -64,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         handleBackPressed();
         //Actualizar los títulos de menu en base al idioma seleccionado
         updateMenuTitles();
-
     }
 
     /**
@@ -188,5 +193,22 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Applies the saved language preference to the application's configuration.
+     * The default language is English ("en") if no language has been saved.
+     */
+    private void applySavedLanguage() {
+        //Recuperamos el lenguaje guardado
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        //Cargamos el lenguaje guardado
+        String language = prefs.getString("app_language", "en");
+        // Cambiar el idioma de la app usando la configuración de la región
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.setLocale(locale);
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
     }
 }
