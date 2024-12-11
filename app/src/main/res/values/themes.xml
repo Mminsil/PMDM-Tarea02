@@ -1,12 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MarioBrosWorld" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.MarioBrosWorld" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="android:windowSplashScreenBackground">#061888</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
+        <item name="android:windowSplashScreenBackground">@color/colorPrimary</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_mario</item>
         <item name="android:windowSplashScreenAnimationDuration">2000</item>
-        <item name="android:windowSplashScreenIconBackgroundColor">#061888</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/colorPrimary</item>
     </style>
+
+
 
     <style name="Theme.MarioBrosWorld" parent="Base.Theme.MarioBrosWorld" />
     <!-- Base application theme for Android <12 -->

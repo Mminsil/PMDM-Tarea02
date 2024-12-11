@@ -37,13 +37,10 @@ public class SplashActivity extends AppCompatActivity {
             // Si la versión es inferior a Android 12 (API 31), manejamos la Splash manualmente
             setContentView(R.layout.splash);
             // Usamos un Handler para retrasar el inicio de la MainActivity
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();  // Terminamos la SplashActivity para que no vuelva a abrirse
-                }
+            new Handler().postDelayed(() -> {
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();  // Terminamos la SplashActivity para que no vuelva a abrirse
             }, SPLASH_TIME_OUT);
         } else {// Si la versión es 31 o superior, dejamos que Android maneje la Splash automáticamente
             Intent intent = new Intent(SplashActivity.this, MainActivity.class);

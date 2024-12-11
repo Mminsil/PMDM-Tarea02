@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MarioBrosWorld" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="android:windowSplashScreenBackground">#061888</item>
+        <item name="android:windowSplashScreenBackground">@color/colorPrimary</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_mario</item>
         <item name="android:windowSplashScreenAnimationDuration">2000</item>
         <item name="android:windowSplashScreenIconBackgroundColor">#4462B2</item>

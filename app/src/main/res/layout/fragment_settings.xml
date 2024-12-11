@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/titleLanguageTextView"
+        style="@style/headerTitleDrawerStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/titleLanguage"
-        android:textSize="25sp"
+        android:textColor="@color/colorSecondary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,11 +33,6 @@
             android:text="@string/language"
             android:textSize="18sp" />
 
-<!--        <Space-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="0.5" />-->
-
         <RadioGroup
             android:id="@+id/languageRadioGroup"
             android:layout_width="wrap_content"
@@ -49,7 +44,7 @@
                 android:id="@+id/englishRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/red"
+                android:buttonTint="@color/colorSecondary"
                 android:clickable="true"
                 android:text="@string/english"
                 android:textSize="18sp" />
@@ -58,6 +53,8 @@
                 android:id="@+id/spanishRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/colorSecondary"
+                android:clickable="true"
                 android:text="@string/spanish"
                 android:textSize="18sp" />
 

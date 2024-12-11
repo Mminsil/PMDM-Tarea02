@@ -1,26 +1,26 @@
 <resources>
     <!-- Nombre de la aplicación -->
     <string name="app_name">Mario Bros World</string>
-
     <!-- Etiquetas generales -->
     <string name="welcome">Welcome to Mario´s World</string>
-    <string name="about">About us</string>
     <string name="accept">Accept</string>
-
     <!-- Detalles de la aplicación -->
     <string name="about_text">Application developed by Mariana Mincarelli Silvero. Version 1.0.</string>
     <string name="image_logo_app">App logo image</string>
-
-    <!-- Sección de personajes -->
+    <!-- Títulos toolbar-->
     <string name="character_details">Character details</string>
     <string name="character_list">Character list</string>
+    <string name="settings_app">Application Settings</string>
+    <!-- Sección de personajes -->
     <string name="character_image">Character image</string>
-    <string name="character_selected">The selected character is: </string>
+    <string name="character_selected">The selected character is:\u0020</string>
+    <!-- Selección del lenguaje-->
     <string name="language">Select language</string>
-    <string name="english">English\n</string>
+    <string name="english">English</string>
     <string name="spanish">Spanish</string>
     <string name="titleLanguage">Change the language</string>
+    <!-- Nombres de los items de los menús -->
     <string name="home">Home</string>
     <string name="settings">Settings</string>
-    <string name="settings_app">Application Settings</string>
+    <string name="about">About us</string>
 </resources>
