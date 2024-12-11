@@ -31,9 +31,9 @@
 
             <TextView
                 android:id="@+id/name"
+                style="@style/titleCardStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/titleCardStyle"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </layout>

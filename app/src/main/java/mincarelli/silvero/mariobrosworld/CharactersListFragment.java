@@ -93,7 +93,6 @@ public class CharactersListFragment extends Fragment {
         characters.add(new Character(R.drawable.goomba, "Goomba", "Un enemigo clásico de Mario", "Se lanza en línea recta para atacar"));
         characters.add(new Character(R.drawable.koopa_troopa, "Koopa Troopa", "Un soldado leal de Bowser", "Se esconde en su caparazón para protegerse"));
         characters.add(new Character(R.drawable.donkey_kong, "Donkey Kong", "Un gorila poderoso", "Utiliza su fuerza para romper barriles y obstáculos"));
-
     }
 
     /**

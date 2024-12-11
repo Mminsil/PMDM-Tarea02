@@ -66,8 +66,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Configurar opciones del menú
         configureNavigationMenu();
+
         // Manejar los clics del botón Atrás
         handleBackPressed();
+
         //Actualizar los títulos de menu en base al idioma seleccionado
         updateMenuTitles();
     }

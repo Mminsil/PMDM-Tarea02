@@ -44,7 +44,7 @@
         android:background="@color/colorPrimary"
         app:headerLayout="@layout/nav_header"
         app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
         app:itemTextAppearance="@style/NavigationViewItemTextAppearance"
+        app:itemTextColor="@color/white"
         app:menu="@menu/drawer_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>
