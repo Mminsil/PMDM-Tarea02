@@ -27,7 +27,7 @@
 
     <style name="detailTextStyle">
         <item name="android:fontFamily">@font/retro_mario_regular</item>
-        <item name="android:textSize">70sp</item>
+        <item name="android:textSize">50sp</item>
         <item name="android:textColor">@color/colorSecondary</item>
     </style>
 
