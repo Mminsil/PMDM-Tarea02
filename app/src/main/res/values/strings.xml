@@ -9,6 +9,7 @@
 
     <!-- Detalles de la aplicación -->
     <string name="about_text">Application developed by Mariana Mincarelli Silvero. Version 1.0.</string>
+    <string name="image_logo_app">App logo image</string>
 
     <!-- Sección de personajes -->
     <string name="character_details">Character details</string>
@@ -19,4 +20,7 @@
     <string name="english">English\n</string>
     <string name="spanish">Spanish</string>
     <string name="titleLanguage">Change the language</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+    <string name="settings_app">Application Settings</string>
 </resources>
