@@ -1,34 +1,41 @@
 package mincarelli.silvero.mariobrosworld;
 
-import static mincarelli.silvero.mariobrosworld.BR.character;
-
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import mincarelli.silvero.mariobrosworld.databinding.ActivityMainBinding;
+import mincarelli.silvero.mariobrosworld.databinding.NavHeaderBinding;
 
+import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.ImageView;
 
+/**
+ * MainActivity handles the main UI and navigation logic of the application.
+ * It sets up the Toolbar, Navigation Drawer, and manages navigation between fragments.
+ */
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private NavController navController;
+    private PreferencesHelper prefs;
+    private AppBarConfiguration appBarConfiguration;
 
+    /**
+     * Called when the activity is starting. Initializes the layout, navigation, and toolbar.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down,
+     *                           this contains the data it most recently supplied. Otherwise, it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,22 +43,127 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         // Configurar Toolbar
         setSupportActionBar(binding.toolbar);
 
-//        NavController y toolbar
+        // Inicializar NavController y toolbar con navigation
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                navController.getGraph()).build();
+        appBarConfiguration = new AppBarConfiguration.Builder(R.id.charactersListFragment).
+                setOpenableLayout(binding.drawerLayout).build();
 
-        NavigationUI.setupActionBarWithNavController(this, navController);
+        // Vincular Toolbar con NavController
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
+        // Configurar NavigationView con NavController
+        NavigationUI.setupWithNavController(binding.navigationView, navController);
 
+        // Configurar opciones del menú
+        configureNavigationMenu();
+        // Manejar los clics del botón Atrás
+        handleBackPressed();
+        //Actualizar los títulos de menu en base al idioma seleccionado
+        updateMenuTitles();
 
     }
 
+    /**
+     * Updates the titles in the Toolbar and the navigation drawer menu to reflect the current language.
+     */
+    public void updateMenuTitles() {
+        // Actualiza el título de la Toolbar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(R.string.settings_app);
+        }
+
+        // Actualiza los títulos del menú del Drawer
+        Menu menu = binding.navigationView.getMenu();
+        menu.findItem(R.id.item_nav_home).setTitle(R.string.home);
+        menu.findItem(R.id.item_nav_settings).setTitle(R.string.settings);
+        // Encuentra y actualiza el texto del TextView en el NavHeader
+        View headerView = binding.navigationView.getHeaderView(0); // Índice 0 si es el único header
+        NavHeaderBinding headerBinding = NavHeaderBinding.bind(headerView);
+        headerBinding.headerSubtitle.setText(R.string.app_name);
+    }
+
+    /**
+     * Inflates the options menu and updates its items.
+     *
+     * @param menu The options menu in which items are placed.
+     * @return true for the menu to be displayed; false otherwise.
+     */
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.about_menu, menu);
+
+        // Actualizar el título del item del menú
+        MenuItem aboutItem = menu.findItem(R.id.about_item);
+        if (aboutItem != null) {
+            aboutItem.setTitle(R.string.about); // Toma el recurso correcto según el idioma
+        }
+        return true;
+    }
+
+    /**
+     * Configures the actions of the navigation drawer menu items.
+     */
+    private void configureNavigationMenu() {
+        binding.navigationView.setNavigationItemSelectedListener(menuItem -> {
+            if (menuItem.getItemId() == R.id.item_nav_home) {
+                navController.navigate(R.id.charactersListFragment); // Navegar al fragmento de inicio
+            } else {
+                navController.navigate(R.id.settingsFragment);
+            }
+
+            binding.drawerLayout.closeDrawers(); // Cerrar el menú lateral
+            return true;
+        });
+
+        // Configurar Header del menú
+        ImageView headerImage = binding.navigationView.getHeaderView(0).findViewById(R.id.header_image);
+        headerImage.setOnClickListener(v -> {
+            navController.navigate(R.id.charactersListFragment);
+            binding.drawerLayout.closeDrawers();
+        });
+    }
+
+    /**
+     * Handles navigation up actions using the NavController.
+     *
+     * @return true if the navigation up action was handled; false otherwise.
+     */
+    @Override
+    public boolean onSupportNavigateUp() {
+        // Utiliza el método navigateUp del NavController
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
+
+    /**
+     * Handles back button presses. Closes the drawer if open or navigates back through the stack.
+     */
+    private void handleBackPressed() {
+        // Maneja el evento de retroceso usando OnBackPressedDispatcher
+        this.getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    binding.drawerLayout.closeDrawer(GravityCompat.START); // Cierra el Drawer si está abierto
+                } else {
+                    if (!navController.popBackStack()) {
+                        // Si no hay más destinos en el stack, cierra la actividad
+                        finish();
+                    }
+                }
+            }
+        });
+    }
+
+    /**
+     * Handles a character click event and navigates to the character detail fragment.
+     *
+     * @param character The character object containing the details to display.
+     * @param view      The view that was clicked.
+     */
     public void characterClicked(@NonNull Character character, View view) {
         Bundle bundle = new Bundle();
         bundle.putInt("image", character.getImage());
@@ -59,25 +171,15 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("description", character.getDescription());
         bundle.putString("skills", character.getSkills());
 
-
-
-
-        Navigation.findNavController(view).navigate(R.id.characterDetailFragment , bundle);
-
-
+        Navigation.findNavController(view).navigate(R.id.characterDetailFragment, bundle);
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        // Utiliza el método navigateUp del NavController
-        return navController.navigateUp() || super.onSupportNavigateUp();
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.about, menu);
-        return true;
-    }
-
+    /**
+     * Handles the selection of options menu items.
+     *
+     * @param item The selected menu item.
+     * @return true if the item selection was handled; false otherwise.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.about_item) {
@@ -87,5 +189,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
